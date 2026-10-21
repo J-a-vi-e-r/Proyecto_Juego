@@ -1,0 +1,67 @@
+~ inicio_trivia
+do Global.congelar_juego()
+
+Sistema: ¡Llegaste al límite de monedas! ¿Quieres responder las preguntas ahora para subir de nivel o prefieres hacerlo más tarde?
+- ¡Sí, vamos a responder!
+	=> pregunta_1
+- No, prefiero hacerlo más tarde.
+	=> fin_tarde
+
+~ pregunta_1
+Sistema: ¿Qué componente es el 'cerebro' del PC?
+- A) GPU
+	set Global.registrar_fallo("¿Qué componente es el 'cerebro' del PC?", "CPU")
+	=> pregunta_2
+- B) CPU
+	=> pregunta_2
+- C) RAM
+	set Global.registrar_fallo("¿Qué componente es el 'cerebro' del PC?", "CPU")
+	=> pregunta_2
+
+~ pregunta_2
+Sistema: ¿Cuál es un motor de base de datos NoSQL?
+- A) MySQL
+	set Global.registrar_fallo("¿Cuál es un motor de base de datos NoSQL?", "MongoDB")
+	=> pregunta_3
+- B) PostgreSQL
+	set Global.registrar_fallo("¿Cuál es un motor de base de datos NoSQL?", "MongoDB")
+	=> pregunta_3
+- C) MongoDB
+	=> pregunta_3
+
+~ pregunta_3
+Sistema: ¿Qué significa SQL?
+- A) Structured Query Language
+	=> fin_gano
+- B) Strong Question
+	set Global.registrar_fallo("¿Qué significa SQL?", "Structured Query Language")
+	=> fin_gano
+- C) Safe Query
+	set Global.registrar_fallo("¿Qué significa SQL?", "Structured Query Language")
+	=> fin_gano
+
+~ fin_gano
+do Global.descongelar_juego()
+do Global.ocultar_boton_trivia()
+do Global.evaluar_resultados_trivia()
+=> END
+
+~ fin_tarde
+do Global.descongelar_juego()
+do Global.ocultar_monedas_mapa()
+do Global.mostrar_boton_trivia()
+=> END
+
+~ pantalla_derrota
+Sistema: Lo siento, fallaste el test. ¡Pero no te preocupes! Puedes volver a intentarlo ahora mismo con el botón de la pantalla o dejarlo para otro momento.
+=> END
+
+~ pantalla_victoria_perfecta
+Sistema: ¡Felicidades! Has superado el nivel con un puntaje perfecto. ¡Sigue así!
+=> END
+
+~ pantalla_victoria_repaso
+Sistema: ¡Felicidades! Has aprobado y superado el nivel.
+Sistema: Eso sí, tuviste un error. Aquí tienes el repaso para que no te quedes con la duda:
+Sistema: {{Global.texto_repaso}}
+=> END

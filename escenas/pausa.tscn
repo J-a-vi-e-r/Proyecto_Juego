@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dpo7a6lkq7g7n"]
+
+[ext_resource type="Script" uid="uid://ddl6ogvxxjxcp" path="res://scripts/pausa.gd" id="1_5fhux"]
+
+[node name="Pausa" type="CanvasLayer" unique_id=429126060]
+process_mode = 3
+script = ExtResource("1_5fhux")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1176467128]
+modulate = Color(1, 1, 1, 0.44705883)
+self_modulate = Color(1, 1, 1, 0.31764707)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6862745, 0.54901963, 0.7882353, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1252184554]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Menu" type="Button" parent="VBoxContainer" unique_id=674538292]
+layout_mode = 2
+text = "Menu"
+
+[node name="Salir" type="Button" parent="VBoxContainer" unique_id=825037411]
+layout_mode = 2
+text = "Salir"
+
+[connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

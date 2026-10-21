@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://o1u7pbpt3c28"]
+
+[ext_resource type="Script" uid="uid://bj5gbgwcn4iwe" path="res://scripts/moneda.gd" id="1_ky0ov"]
+[ext_resource type="Texture2D" uid="uid://ebx5nemgctlp" path="res://Assets/Mundo/MonedaD.png" id="2_gir1o"]
+[ext_resource type="AudioStream" uid="uid://dp1yn64frhvxq" path="res://Assets/Sonidos/Monedas.ogg" id="3_gir1o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky0ov"]
+atlas = ExtResource("2_gir1o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gir1o"]
+atlas = ExtResource("2_gir1o")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj5m8"]
+atlas = ExtResource("2_gir1o")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5ycd"]
+atlas = ExtResource("2_gir1o")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m02so"]
+atlas = ExtResource("2_gir1o")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7458y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky0ov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gir1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj5m8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5ycd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m02so")
+}],
+"loop": true,
+"name": &"Moneda",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r4iok"]
+radius = 7.0
+
+[node name="Moneda" type="Area2D" unique_id=131925715 groups=["Monedas"]]
+script = ExtResource("1_ky0ov")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=491403423]
+sprite_frames = SubResource("SpriteFrames_7458y")
+animation = &"Moneda"
+frame_progress = 0.8224729
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1775777478]
+shape = SubResource("CircleShape2D_r4iok")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=199441564]
+stream = ExtResource("3_gir1o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
