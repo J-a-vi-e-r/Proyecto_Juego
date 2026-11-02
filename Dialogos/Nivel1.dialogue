@@ -1,67 +1,95 @@
-~ inicio_trivia
-do Global.congelar_juego()
+~ inicio_recepcionista
 
-Sistema: ¡Llegaste al límite de monedas! ¿Quieres responder las preguntas ahora para subir de nivel o prefieres hacerlo más tarde?
-- ¡Sí, vamos a responder!
-	=> pregunta_1
-- No, prefiero hacerlo más tarde.
-	=> fin_tarde
+if Global.monedas_actuales < Global.meta_monedas:
+	Recepcionista: ¡Bienvenido al Gremio de Aventureros! ¿Necesitas ayuda con algo?
+	Recepcionista: Tu misión actual es explorar el bosque, recoger {{Global.meta_monedas}} monedas y volver conmigo.
+	Recepcionista: Cuando las tengas, te haré el examen. ¡Mucha suerte!
+	=> END
+else:
+	Recepcionista: ¡Vaya! Veo que ya lograste reunir las {{Global.meta_monedas}} monedas. ¡Excelente trabajo!
+	Recepcionista: ¿Te sientes listo para hacer el examen ahora mismo?
+	- ¡Sí, vamos a responder!
+		Heroe: ¡Estoy listo!
+		Recepcionista: ¡Perfecto! Aquí va la primera pregunta...
+		do Global.congelar_juego()
+		=> pregunta_1
+	- No, prefiero prepararme un poco más.
+		Heroe: Todavía me falta estudiar un poco las pistas.
+		Recepcionista: No hay problema. ¡Vuelve cuando te sientas preparado!
+		=> END
+
 
 ~ pregunta_1
-Sistema: ¿Qué componente es el 'cerebro' del PC?
+Recepcionista: ¿Qué componente es el 'cerebro' del PC?
 - A) GPU
+	Heroe: Yo creo que es la GPU.
 	set Global.registrar_fallo("¿Qué componente es el 'cerebro' del PC?", "CPU")
 	=> pregunta_2
 - B) CPU
+	Heroe: Definitivamente es la CPU.
 	=> pregunta_2
 - C) RAM
+	Heroe: Mmm... ¿La memoria RAM?
 	set Global.registrar_fallo("¿Qué componente es el 'cerebro' del PC?", "CPU")
 	=> pregunta_2
 
+
 ~ pregunta_2
-Sistema: ¿Cuál es un motor de base de datos NoSQL?
+Recepcionista: ¿Cuál es un motor de base de datos NoSQL?
 - A) MySQL
+	Heroe: Podría ser MySQL...
 	set Global.registrar_fallo("¿Cuál es un motor de base de datos NoSQL?", "MongoDB")
 	=> pregunta_3
 - B) PostgreSQL
+	Heroe: Me suena a PostgreSQL.
 	set Global.registrar_fallo("¿Cuál es un motor de base de datos NoSQL?", "MongoDB")
 	=> pregunta_3
 - C) MongoDB
+	Heroe: ¡Es MongoDB!
 	=> pregunta_3
 
+
 ~ pregunta_3
-Sistema: ¿Qué significa SQL?
+Recepcionista: ¿Qué significa SQL?
 - A) Structured Query Language
+	Heroe: Significa Structured Query Language.
 	=> fin_gano
 - B) Strong Question
+	Heroe: ¿Strong Question?
 	set Global.registrar_fallo("¿Qué significa SQL?", "Structured Query Language")
 	=> fin_gano
 - C) Safe Query
+	Heroe: Debe ser Safe Query.
 	set Global.registrar_fallo("¿Qué significa SQL?", "Structured Query Language")
 	=> fin_gano
 
+
 ~ fin_gano
-do Global.descongelar_juego()
+Recepcionista: ¡Hemos terminado el examen! Déjame revisar tus respuestas...
 do Global.ocultar_boton_trivia()
 do Global.evaluar_resultados_trivia()
-=> END
+if Global.trivia_aprobada:
+	if Global.texto_repaso != "":
+		=> pantalla_victoria_repaso
+	else:
+		=> pantalla_victoria_perfecta
+else:
+	=> pantalla_derrota
 
-~ fin_tarde
-do Global.descongelar_juego()
-do Global.ocultar_monedas_mapa()
-do Global.mostrar_boton_trivia()
-=> END
 
 ~ pantalla_derrota
-Sistema: Lo siento, fallaste el test. ¡Pero no te preocupes! Puedes volver a intentarlo ahora mismo con el botón de la pantalla o dejarlo para otro momento.
+Recepcionista: Lo siento, fallaste el test. ¡Pero no te desanimes! 
+Recepcionista: Puedes volver a intentarlo ahora mismo o salir a buscar más pistas y dejarlo para otro momento.
 => END
+
 
 ~ pantalla_victoria_perfecta
-Sistema: ¡Felicidades! Has superado el nivel con un puntaje perfecto. ¡Sigue así!
+Recepcionista: ¡Felicidades! Has superado el examen con un puntaje perfecto. ¡Sigue así, el gremio está orgulloso de ti!
 => END
 
+
 ~ pantalla_victoria_repaso
-Sistema: ¡Felicidades! Has aprobado y superado el nivel.
-Sistema: Eso sí, tuviste un error. Aquí tienes el repaso para que no te quedes con la duda:
-Sistema: {{Global.texto_repaso}}
+Recepcionista: ¡Felicidades! Has aprobado y tienes permiso para ir al siguiente nivel.
+Recepcionista: Eso sí, tuviste algún error. Aquí tienes el repaso de los manuales para que no te quedes con la duda:
+Recepcionista: {{Global.texto_repaso}}
 => END

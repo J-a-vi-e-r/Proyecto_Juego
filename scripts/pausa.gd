@@ -17,6 +17,11 @@ func _ready():
 # _input recibe todos los eventos de teclado/ratón antes que _process.
 # Es el lugar ideal para detectar teclas globales como Escape.
 func _input(event):
+	if Global.hay_dialogo_activo():
+		return
+	var pantalla_muerte = get_node_or_null("../Interfaz/PantallaMuerte")
+	if pantalla_muerte and pantalla_muerte.visible:
+		return
 	# Si el jugador presiona el botón configurado como "ui_cancel" (por defecto es la tecla Escape)
 	if event.is_action_pressed("ui_cancel"):
 		# El operador '!' invierte el booleano: si era false pasa a true, y viceversa.
@@ -49,6 +54,8 @@ func _on_salir_pressed() -> void:
 # en la pestaña "📝 Responder Trivia" que aparece en la pantalla.
 # =========================================================================
 func _on_boton_trivia_pressed():
+	if Global.hay_dialogo_activo():
+		return
 	# 1. Ocultamos el botón para que no se quede dibujado encima de las preguntas
 	Global.ocultar_boton_trivia()
 	
@@ -59,14 +66,21 @@ func _on_boton_trivia_pressed():
 	Global.congelar_juego()
 	
 	# 4. Abrimos el diálogo directamente en la primera pregunta (saltándonos la confirmación inicial)
-	DialogueManager.show_example_dialogue_balloon(load("res://Dialogos/Nivel1.dialogue"), "pregunta_1")
+	Global.mostrar_dialogo("pregunta_1")
 
 
 func _on_boton_reiniciar_pressed():
 	get_tree().paused = false # ¡MUY IMPORTANTE despausar el motor primero!
+	Global.reset_monedas_nivel()
 	get_tree().reload_current_scene() # Recarga el mapa desde cero con 100 de vida
 
 
 func _on_boton_menu_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://escenas/Menu.tscn") # Pon la ruta real de tu menú
+
+
+func _on_volver_niveles_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://escenas/MenuNiveles.tscn")
+	pass # Replace with function body.

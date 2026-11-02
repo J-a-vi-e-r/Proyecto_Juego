@@ -1,0 +1,123 @@
+ATLANTISIS ADVENTURE — TU CUADRO DE DIÁLOGO
+
+1. ¿QUÉ COPIÉ?
+
+Copié la escena de Dialogue Manager que tú ya habías personalizado.
+Conservé sus nodos, tamaños, márgenes, imágenes, fuentes y respuestas.
+No diseñé un cuadro distinto ni añadí un segundo cuadro visible.
+
+Antes editabas esta escena dentro del plugin:
+res://addons/dialogue_manager/example_balloon/example_balloon.tscn
+
+Ahora la escena que utiliza tu juego es:
+res://escenas/dialogos/GloboDialogo.tscn
+
+La original sigue existiendo. El juego abre la copia de tu carpeta escenas.
+
+2. ¿POR QUÉ COPIARLA?
+
+La carpeta addons pertenece al plugin. Una actualización puede sustituir
+sus archivos de ejemplo. Por eso conviene guardar la interfaz personalizada
+del juego fuera de esa carpeta.
+
+Dialogue Manager sigue haciendo su trabajo: lee Nivel1.dialogue, interpreta
+las condiciones y avanza por las preguntas. Tu escena se ocupa de mostrarlo.
+
+3. TAMBIÉN COPIÉ EL SCRIPT
+
+Script de ejemplo que ya estaba:
+res://addons/dialogue_manager/example_balloon/example_balloon.gd
+
+Copia que utiliza tu cuadro:
+res://scripts/GloboDialogo.gd
+
+En la raíz de GloboDialogo.tscn está asignado ese script propio.
+Si solo copiara la escena y dejara el script de addons, una actualización
+todavía podría sustituir el código de tu cuadro.
+
+El script original comienza con:
+class_name DialogueManagerExampleBalloon extends CanvasLayer
+
+La copia comienza con:
+extends CanvasLayer
+
+Quité class_name de la copia para que no hubiera dos scripts registrados
+con el mismo nombre global. No hace falta ponerle class_name para usarla.
+
+Godot también genera GloboDialogo.gd.uid: es el identificador del script.
+No tienes que escribirlo ni configurarlo a mano.
+
+4. ¿CÓMO SABE EL PLUGIN QUÉ ESCENA ABRIR?
+
+En project.godot quedó esta configuración:
+
+[dialogue_manager]
+
+runtime/balloon_path="res://escenas/dialogos/GloboDialogo.tscn"
+
+Cuando se llama a DialogueManager.show_dialogue_balloon(), el plugin consulta
+esa ruta y crea tu cuadro. show_example_dialogue_balloon() abre expresamente
+el ejemplo del plugin, por eso cambié las llamadas del juego.
+
+En tu juego la llamada está reunida en Global.mostrar_dialogo(titulo).
+Por ejemplo, la recepcionista hace:
+
+Global.mostrar_dialogo("inicio_recepcionista")
+
+Esa función abre res://Dialogos/Nivel1.dialogue por el título indicado.
+No necesitas colocar una instancia fija del globo dentro de Mundo.tscn:
+se crea al hablar y se elimina al terminar.
+
+5. ¿QUÉ FUNCIONES NUEVAS HAY Y PARA QUÉ SIRVEN?
+
+Global.hay_dialogo_activo(): comprueba si ya está abierto un cuadro.
+Evita que pulsar F varias veces cree cuadros superpuestos.
+
+Global.registrar_dialogo(globo): guarda una referencia al cuadro abierto
+y detiene el movimiento del personaje mientras conversa.
+
+Global.finalizar_dialogo(globo): borra esa referencia cuando se cierra el
+cuadro y devuelve el movimiento si el jugador sigue vivo.
+
+En GloboDialogo.gd, _ready() registra el cuadro y _exit_tree() lo libera.
+Así también se limpia el estado cuando se cambia de escena.
+
+_actualizar_retrato(personaje): elige uno de tus retratos ya existentes
+según el nombre de quien habla: Recepcionista, Heroe/Héroe o Aldeano.
+Conserva el recorte de AtlasTexture que ya tenía tu interfaz.
+
+La variable avanzando_linea impide solicitar dos avances a la vez con
+clics muy rápidos. Las respuestas se ocultan mientras se obtiene la línea.
+
+El resultado de la trivia continúa dentro del mismo diálogo, en lugar de
+crear otro cuadro al evaluar las respuestas. Tus preguntas son las mismas.
+
+6. ¿DÓNDE CAMBIAR CADA COSA A PARTIR DE AHORA?
+
+Diseño, posición de respuestas, tamaños y márgenes:
+  escenas/dialogos/GloboDialogo.tscn
+
+Comportamiento del cuadro y selección de retratos:
+  scripts/GloboDialogo.gd
+
+Texto, preguntas, respuestas y saltos de la conversación:
+  Dialogos/Nivel1.dialogue
+
+Control de apertura, bloqueo de movimiento y progreso:
+  scripts/Global.gd
+
+7. SI QUISIERAS HACER ESTA COPIA TÚ EN OTRO PROYECTO
+
+1) Abre la escena personalizada de example_balloon.
+2) Usa Guardar escena como y guárdala en una carpeta propia de escenas.
+3) Duplica su script y guarda la copia en tu carpeta scripts.
+4) Quita o cambia el class_name repetido en la copia del script.
+5) Asigna el script copiado al nodo raíz de la escena copiada y guarda.
+6) Configura dialogue_manager/runtime/balloon_path con la ruta nueva.
+7) Abre diálogos con show_dialogue_balloon(), que utiliza esa configuración.
+
+En el ZIP corregido ya está hecho. No necesitas repetir estos pasos.
+
+Hay además dos correcciones pequeñas dentro del código del plugin, detalladas
+en CAMBIOS_Y_PRUEBAS.txt. Separar tu cuadro protege su diseño; esas dos
+correcciones de compatibilidad conviene revisarlas si actualizas el plugin.

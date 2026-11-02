@@ -34,8 +34,9 @@ func _on_timer_timeout():
 
 # --- CREACIÓN DE MONEDAS ---
 func generar_moneda():
-	# 1. instantiate() crea una copia "viva" de la escena PackedScene en memoria.
-	var nueva_moneda = moneda_scene.instantiate()
+	var jugador = get_node_or_null("../Jugador")
+	if jugador == null or moneda_scene == null:
+		return
 	
 	# --- VALIDACIÓN ANTICOLISIÓN REFORZADA ---
 	var posicion_valida = false
@@ -45,18 +46,18 @@ func generar_moneda():
 	
 	# Traemos la referencia de la capa de montañas para revisar sus celdas directamente
 	# Nota: Asegúrate de que la ruta hacia tu capa "Montañas" sea la correcta
-	var capa_montanas = $"../TileMapLayers/Montaña"
+	var capa_montanas = get_node_or_null("../TileMapLayers/Montaña")
 	
 	while not posicion_valida and intentos < 10:
 		intentos += 1
 		
 		# 2. Calculamos la posición aleatoria tentativa cerca del jugador
 		offset = Vector2(randf_range(-300, 300), randf_range(-300, 300))
-		posicion_intento = $"../Jugador".position + offset
+		posicion_intento = jugador.global_position + offset
 		
 		if capa_montanas:
 			# Convertimos la posición global en píxeles a coordenadas de celda (ej: columna 5, fila 3)
-			var coordenada_celda = capa_montanas.local_to_map(posicion_intento)
+			var coordenada_celda = capa_montanas.local_to_map(capa_montanas.to_local(posicion_intento))
 			
 			# Le preguntamos al TileMapLayer si hay un dibujo/física en esa celda exacta
 			var datos_celda = capa_montanas.get_cell_tile_data(coordenada_celda)
@@ -68,8 +69,22 @@ func generar_moneda():
 			# Si por alguna razón no encuentra la capa, acepta la posición para no romper el juego
 			posicion_valida = true
 	
+		if posicion_valida:
+			posicion_valida = _tiene_suelo(posicion_intento)
+		if posicion_valida:
+			var consulta = PhysicsPointQueryParameters2D.new()
+			consulta.position = posicion_intento
+			consulta.collision_mask = jugador.collision_mask
+			consulta.exclude = [jugador.get_rid()]
+			consulta.collide_with_areas = false
+			posicion_valida = get_world_2d().direct_space_state.intersect_point(consulta, 1).is_empty()
+
+	if not posicion_valida:
+		return
+	var nueva_moneda = moneda_scene.instantiate()
+
 	# 3. Posicionamos la nueva moneda de forma segura en el lugar libre encontrado
-	nueva_moneda.position = $"../Jugador".position + offset
+	nueva_moneda.position = to_local(posicion_intento)
 	
 	# 4. SEÑALES POR CÓDIGO: Conectamos la señal de recolección
 	nueva_moneda.tree_exited.connect(_on_moneda_recogida)
@@ -84,4 +99,16 @@ func generar_moneda():
 # Esta función se activa automáticamente gracias a la señal conectada en el paso 4
 func _on_moneda_recogida():
 	# Como una moneda fue eliminada del mapa, restamos 1 para que el spawner pueda generar una nueva
-	monedas_en_mapa -= 1
+	monedas_en_mapa = maxi(0, monedas_en_mapa - 1)
+
+
+func _tiene_suelo(posicion_global: Vector2) -> bool:
+	var hay_capas = false
+	for nombre in ["Suelo", "Suelo 2"]:
+		var capa = get_node_or_null("../TileMapLayers/" + nombre)
+		if capa:
+			hay_capas = true
+			var celda = capa.local_to_map(capa.to_local(posicion_global))
+			if capa.get_cell_tile_data(celda) != null:
+				return true
+	return not hay_capas

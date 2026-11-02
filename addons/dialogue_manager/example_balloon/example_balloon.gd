@@ -135,8 +135,6 @@ func apply_dialogue_line() -> void:
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
-	
-	dialogue_label.text = "[tracking=5]" + dialogue_line.text + "[/tracking]"
 
 	responses_menu.hide()
 	responses_menu.responses = dialogue_line.responses

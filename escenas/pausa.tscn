@@ -30,13 +30,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
 
-[node name="Menu" type="Button" parent="VBoxContainer" unique_id=674538292]
+[node name="MenuPrincipal" type="Button" parent="VBoxContainer" unique_id=674538292]
 layout_mode = 2
-text = "Menu"
+text = "Menu Pincipal"
+
+[node name="VolverNiveles" type="Button" parent="VBoxContainer" unique_id=1470571606]
+layout_mode = 2
+text = "Menu Niveles"
 
 [node name="Salir" type="Button" parent="VBoxContainer" unique_id=825037411]
 layout_mode = 2
 text = "Salir"
 
-[connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuPrincipal" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/VolverNiveles" to="." method="_on_volver_niveles_pressed"]
 [connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

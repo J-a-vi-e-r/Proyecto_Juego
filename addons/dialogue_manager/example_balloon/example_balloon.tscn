@@ -2,7 +2,16 @@
 
 [ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="Texture2D" uid="uid://bkwcllsemy073" path="res://Assets/NPC, adorno dialogo y enemigo/01_panel_dialogo.png" id="2_kmygl"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="Texture2D" path="res://Assets/NPC, adorno dialogo y enemigo/NPCs/secretaria_portrait.png" id="3_r5ei8"]
+[ext_resource type="Texture2D" uid="uid://bfesnuv5rwg05" path="res://Assets/NPC, adorno dialogo y enemigo/02_marco_retrato.png" id="3_wqs7j"]
+[ext_resource type="Texture2D" uid="uid://dpqk64h57y002" path="res://Assets/NPC, adorno dialogo y enemigo/05_linea_nombre.png" id="4_v42gu"]
+[ext_resource type="Texture2D" uid="uid://5achex4nlhb0" path="res://Assets/NPC, adorno dialogo y enemigo/06_divisor_vertical.png" id="5_odc0r"]
+[ext_resource type="FontFile" uid="uid://dec4ihlhtvkon" path="res://Assets/Fonts/DejaVuSerif-Bold.ttf" id="6_wbrl0"]
+[ext_resource type="Texture2D" uid="uid://bpf4d822s4c3j" path="res://Assets/NPC, adorno dialogo y enemigo/07_flecha_continuar.png" id="8_1kn55"]
+[ext_resource type="Texture2D" uid="uid://cai3wqq6qvl7h" path="res://Assets/NPC, adorno dialogo y enemigo/03_respuesta_normal.png" id="11_83g4i"]
+[ext_resource type="Texture2D" uid="uid://kmmshrp505at" path="res://Assets/NPC, adorno dialogo y enemigo/04_respuesta_contorno_azul.png" id="12_exrs5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -63,11 +72,12 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 
-[sub_resource type="SystemFont" id="SystemFont_qkmqt"]
-font_names = PackedStringArray("Arial")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k8si3"]
+texture = ExtResource("2_kmygl")
 
-[sub_resource type="SystemFont" id="SystemFont_nlsx6"]
-font_names = PackedStringArray("Arial")
+[sub_resource type="AtlasTexture" id="AtlasTexture_efrg5"]
+atlas = ExtResource("3_r5ei8")
+region = Rect2(7, 10, 88, 128)
 
 [sub_resource type="Animation" id="Animation_nlsx6"]
 length = 0.001
@@ -105,8 +115,15 @@ _data = {
 &"progress": SubResource("Animation_qkmqt")
 }
 
-[sub_resource type="SystemFont" id="SystemFont_1337t"]
-font_names = PackedStringArray("Arial")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_icj72"]
+texture = ExtResource("11_83g4i")
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbrl0"]
+texture = ExtResource("12_exrs5")
 
 [node name="ExampleBalloon" type="CanvasLayer" unique_id=1434168376]
 layer = 100
@@ -128,23 +145,42 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.00077023794
-offset_top = -131.45451
-offset_right = 0.00079345703
+offset_top = -136.0
 grow_horizontal = 2
 grow_vertical = 0
-rotation = -5.2953743e-05
 
 [node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer" unique_id=810051587]
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_k8si3")
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer" unique_id=1030936092]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer" unique_id=1428277592]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1360606713]
+custom_minimum_size = Vector2(100, 125)
+layout_mode = 2
+texture = ExtResource("3_wqs7j")
+expand_mode = 1
+
+[node name="Retrato" type="TextureRect" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/TextureRect" unique_id=1226477927]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 97.0
+offset_bottom = 121.0
+texture = SubResource("AtlasTexture_efrg5")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1046224978]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+texture = ExtResource("5_odc0r")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1624289611]
 layout_mode = 2
@@ -155,19 +191,25 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
-theme_override_fonts/normal_font = SubResource("SystemFont_qkmqt")
-theme_override_font_sizes/normal_font_size = 11
+theme_override_fonts/normal_font = ExtResource("6_wbrl0")
 bbcode_enabled = true
 text = "Character"
 fit_content = true
 scroll_active = false
 
+[node name="TextureRect" type="TextureRect" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=74146346]
+custom_minimum_size = Vector2(100, 15)
+layout_mode = 2
+texture = ExtResource("4_v42gu")
+expand_mode = 1
+stretch_mode = 4
+
 [node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1225160028 instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/normal_font = SubResource("SystemFont_nlsx6")
-theme_override_font_sizes/normal_font_size = 10
+theme_override_fonts/normal_font = ExtResource("6_wbrl0")
+theme_override_font_sizes/normal_font_size = 14
 text = "Dialogue..."
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1162966119]
@@ -177,6 +219,7 @@ size_flags_vertical = 8
 
 [node name="Progress" type="Polygon2D" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control" unique_id=821575988]
 unique_name_in_owner = true
+texture = ExtResource("8_1kn55")
 polygon = PackedVector2Array(0, 0, 10, 10, 20, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control" unique_id=452325722]
@@ -186,16 +229,16 @@ autoplay = &"progress"
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" unique_id=966297223 node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -264.0
-offset_top = -28.0
-offset_right = -32.0
-offset_bottom = 42.0
-grow_horizontal = 0
+offset_left = 72.0
+offset_top = -36.0
+offset_right = 282.5
+offset_bottom = 12.0
+grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 2
@@ -205,8 +248,10 @@ response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu" unique_id=914537232]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_1337t")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("6_wbrl0")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_icj72")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wbrl0")
 text = "Response example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1116280512]

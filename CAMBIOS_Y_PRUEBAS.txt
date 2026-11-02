@@ -1,0 +1,132 @@
+ATLANTISIS ADVENTURE — CORRECCIONES Y COMPROBACIONES
+
+ABRIR EL PROYECTO
+
+Descomprime Proyecto_Juego_corregido.zip en una carpeta nueva y abre su
+Proyecto_Juego/project.godot con Godot 4.7.2. Conserva tu carpeta original.
+La primera apertura importará las imágenes y los sonidos.
+
+El paquete no incluye la carpeta .godot, que Godot vuelve a generar.
+Sí conserva los archivos del proyecto y los recursos originales.
+No necesitas copiar piezas ni reconfigurar el diálogo para probarlo.
+
+QUÉ SE CONSERVÓ
+
+Se compararon los 629 archivos de Assets con los del ZIP original: sus bytes
+son idénticos. No cambié imágenes, sonidos, fuentes ni animaciones gráficas.
+Los datos de las celdas pintadas del mapa también son idénticos al original.
+Se mantuvieron las preguntas, las opciones y la regla de aprobar con menos
+de dos fallos. Los niveles bloqueados y el botón de opciones pendiente
+siguen como estaban. No se publicaron cambios ni se hicieron commits.
+
+QUÉ CORREGÍ
+
+1) TileSet del mundo
+Había 5361 definiciones de tiles fuera de una textura de 352 x 192 píxeles.
+Con celdas de 16 x 16 caben 22 columnas y 12 filas, no 75 x 75.
+Quité únicamente esas definiciones inválidas. No repinté ni moví el mapa.
+Las 5465 celdas colocadas conservan referencias válidas.
+
+2) Retrato de la recepcionista
+La ruta buscaba secretaria_portrait.png en la carpeta superior. El archivo
+está dentro de NPCs. Corregí esa referencia.
+
+3) Escena propia para tu diálogo
+Copié tu example_balloon personalizado a escenas/dialogos/GloboDialogo.tscn
+y su script a scripts/GloboDialogo.gd. Tu diseño se conserva. Configuré el
+plugin para abrir esa copia. La explicación detallada y los pasos están en
+COMO_FUNCIONA_EL_DIALOGO.txt.
+
+4) Diálogos superpuestos y movimiento
+Pulsar F repetidamente podía crear varias conversaciones. Ahora hay una
+referencia al cuadro activo y solo se abre uno. Mientras habla, el personaje
+no camina ni recibe la entrada de daño de prueba. Al cerrar el cuadro vuelve
+el movimiento. Escape no abre la pausa mientras se conversa.
+El bloqueo no interrumpe una animación de espada que ya está en curso.
+Los retratos existentes cambian según quién habla.
+
+5) Resultados de la trivia
+Antes la evaluación abría otro cuadro mientras el anterior seguía activo.
+Ahora el mismo diálogo salta a derrota, victoria perfecta o victoria con
+repaso. Se conserva el repaso si se aprueba con un error. Fallar vuelve a
+mostrar el botón para reintentar. Las reglas de puntuación no cambiaron.
+La misión consulta meta_monedas en lugar de decir siempre diez monedas.
+
+6) Reinicios y cambio de escenas
+Empezar el nivel seleccionado reinicia monedas, fallos y datos del intento.
+Reiniciar tras morir también limpia el contador. Los botones de cambiar de
+escena ignoran clics repetidos durante la espera del sonido.
+Las rutas iniciales de escena y autoload usan rutas res:// para que una
+primera apertura no dependa de la caché de identificadores de otra máquina.
+
+7) Monedas
+Una colisión repetida ya no suma dos veces la misma moneda. La eliminación
+tras el sonido utiliza una señal de una sola ejecución. El spawner comprueba
+suelo, montañas y colisiones; si no encuentra un lugar tras diez intentos,
+no crea una moneda en una posición inválida. Usa conversiones de coordenadas
+locales/globales y mantiene el límite de quince. Al limpiar el mapa, el
+contador no puede quedar negativo.
+
+8) Pausa, muerte y referencias opcionales
+Escape ya no permite salir de la pausa de muerte. Las referencias de interfaz
+del jugador y la capa de escaleras se consultan con get_node_or_null para
+poder abrir el personaje en una escena aislada sin errores de nodos ausentes.
+La tecla B de daño de prueba no repite daño por autorepetición del teclado.
+
+9) Dos ajustes pequeños del plugin
+views/main_view.gd: adapta la lectura del tamaño de fuente al ajuste de Godot
+4.7 y conserva la ruta anterior como alternativa, con un valor por defecto.
+dialogue_manager.gd: duplica el diccionario de una línea antes de añadir los
+datos temporales. Evita una referencia circular que retenía el recurso de
+diálogo al terminar. No actualicé ni sustituí todo el plugin (versión 3.10.5).
+Una futura actualización puede sustituir estos dos archivos; conviene probar
+de nuevo después de actualizar, aunque tu cuadro propio siga separado.
+
+ARCHIVOS ORIGINALES MODIFICADOS (14)
+
+project.godot
+escenas/Mundo.tscn
+Dialogos/Nivel1.dialogue
+scripts/Global.gd
+scripts/Jugador.gd
+scripts/Recepcionista.gd
+scripts/menu.gd
+scripts/menu_niveles.gd
+scripts/moneda.gd
+scripts/pausa.gd
+scripts/spawner.gd
+addons/dialogue_manager/dialogue_manager.gd
+addons/dialogue_manager/views/main_view.gd
+addons/dialogue_manager/example_balloon/example_balloon.tscn
+
+ARCHIVOS NUEVOS DEL JUEGO (3)
+
+escenas/dialogos/GloboDialogo.tscn — copia de tu escena personalizada.
+scripts/GloboDialogo.gd — copia del script con las correcciones del cuadro.
+scripts/GloboDialogo.gd.uid — identificador generado por Godot.
+
+Además se incluyen estos dos TXT de explicación.
+
+COMPROBACIONES AL PREPARAR ESTA DESCARGA
+
+Motor utilizado: Godot 4.7.2 estable oficial, ejecución headless.
+
+- Importación desde una carpeta sin caché .godot: completada sin errores
+  ni advertencias en el registro.
+- 50 comprobaciones de integración: todas pasaron. Cubren menú, las tres
+  páginas del tutorial, selección de niveles, celdas del mapa, interacción
+  con F, retratos, movimiento al conversar, animaciones de espada, monedas,
+  los tres resultados de la trivia, repaso, metas, pausa, muerte y reinicio.
+- Apertura de la escena principal: sin errores ni advertencias en el registro.
+- Auditoría de ocho escenas: 289 recursos revisados, incluidas 132 texturas
+  AtlasTexture con recortes válidos; sin fallos ni advertencias.
+- Comparación con el ZIP original: recursos de Assets y datos pintados del
+  mapa sin modificaciones; no falta ningún archivo original del proyecto.
+
+LÍMITES DE ESTA REVISIÓN
+
+Las comprobaciones automáticas se ejecutaron sin ventana. No sustituyen una
+revisión visual de márgenes, escalado y controles en tu pantalla. No se ha
+exportado ni probado un APK en Android: esa compatibilidad todavía requiere
+una prueba en un dispositivo. Las funciones y niveles que estaban pendientes
+no se han inventado ni completado dentro de esta corrección.

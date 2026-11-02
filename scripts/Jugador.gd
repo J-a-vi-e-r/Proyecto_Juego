@@ -14,11 +14,11 @@ const SPEED = 150.0  # Velocidad del jugador en píxeles por segundo
 var vida_maxima: float = 100.0
 var vida_actual: float = 100.0
 
-@onready var pantalla_muerte = $"../UI/Interfaz/PantallaMuerte"
+@onready var pantalla_muerte = get_node_or_null("../UI/Interfaz/PantallaMuerte")
 
 # Referencia a la barra en la interfaz HD
-@onready var barra_vida = $"../UI/Interfaz/BarraVida"
-@onready var texto_vida = $"../UI/Interfaz/BarraVida/TextoVida"
+@onready var barra_vida = get_node_or_null("../UI/Interfaz/BarraVida")
+@onready var texto_vida = get_node_or_null("../UI/Interfaz/BarraVida/TextoVida")
 
 # --- CONFIGURACIÓN DE LA CÁMARA ---
 @onready var camara = $Camera2D
@@ -85,8 +85,10 @@ func _physics_process(delta):
 
 
 func _input(event):
+	if Global.hay_dialogo_activo() or get_tree().paused:
+		return
 	# PRUEBA DE DAÑO MANUAL: Al presionar la B una sola vez, descuenta vida limpiamente
-	if event is InputEventKey and event.pressed and event.keycode == KEY_B:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_B:
 		recibir_daño(10)
 
 
@@ -222,12 +224,12 @@ func recibir_daño(cantidad):
 
 
 func obtener_datos_suelo(offset_anticipacion: Vector2) -> String:
-	var tilemap = $"../TileMapLayers/Escalera" 
+	var tilemap = get_node_or_null("../TileMapLayers/Escalera") 
 	if not tilemap:
 		return ""
 		
 	var posicion_revision = global_position + Vector2(0, 10) + offset_anticipacion
-	var celda = tilemap.local_to_map(posicion_revision)
+	var celda = tilemap.local_to_map(tilemap.to_local(posicion_revision))
 	var datos_celda = tilemap.get_cell_tile_data(celda)
 	
 	if datos_celda:

@@ -42,12 +42,56 @@ var nivel_actual = 1      # El nivel o fase en la que se encuentra el jugador
 
 # --- VARIABLES PARA LA TRIVIA NUEVA ---
 var fallos = 0
+var trivia_aprobada: bool = false
+var globo_dialogo: Node = null
 var texto_repaso = ""     # Guardará la lista de respuestas correctas para el final
 
 # --- FUNCIONES DE UTILIDAD ---
 # Reinicia el contador de monedas a cero. Se llama al empezar un nivel limpio.
 func reset_monedas_nivel():
 	monedas_actuales = 0
+	fallos = 0
+	texto_repaso = ""
+	trivia_aprobada = false
+
+
+func preparar_nivel(numero: int):
+	nivel_actual = numero
+	meta_monedas = numero * 10
+	reset_monedas_nivel()
+
+
+func hay_dialogo_activo() -> bool:
+	return is_instance_valid(globo_dialogo)
+
+
+func mostrar_dialogo(titulo: String) -> Node:
+	if hay_dialogo_activo():
+		return null
+	globo_dialogo = DialogueManager.show_dialogue_balloon(load("res://Dialogos/Nivel1.dialogue"), titulo)
+	bloquear_movimiento_dialogo()
+	return globo_dialogo
+
+
+func registrar_dialogo(globo: Node):
+	globo_dialogo = globo
+	bloquear_movimiento_dialogo()
+
+
+func finalizar_dialogo(globo: Node):
+	if globo_dialogo != globo:
+		return
+	globo_dialogo = null
+	descongelar_juego()
+
+
+func _buscar_nodo_actual(nombre: String) -> Node:
+	if not is_inside_tree() or get_tree().current_scene == null:
+		return null
+	var escena = get_tree().current_scene
+	if escena.name == nombre:
+		return escena
+	return escena.find_child(nombre)
 
 # Registra de forma silenciosa la pregunta fallada y su respuesta correcta
 func registrar_fallo(pregunta: String, respuesta_correcta: String):
@@ -56,62 +100,43 @@ func registrar_fallo(pregunta: String, respuesta_correcta: String):
 
 # Evalúa lo que pasa al terminar el diálogo
 func evaluar_resultados_trivia():
-	# CONDICIÓN DE DERROTA: 2 o más fallos
-	if fallos >= 2:
+	trivia_aprobada = fallos < 2
+	if not trivia_aprobada:
 		fallos = 0
 		texto_repaso = ""
 		mostrar_boton_trivia()
-		DialogueManager.show_example_dialogue_balloon(load("res://Dialogos/Nivel1.dialogue"), "pantalla_derrota")
-		
-	# CONDICIÓN DE VICTORIA: menos de 2 fallos (0 o 1 error)
 	else:
-		var repaso_final = texto_repaso
-		
 		fallos = 0
-		texto_repaso = ""
-		
-		# Progreso del jugador
 		nivel_actual += 1
 		meta_monedas += 10
 		monedas_actuales = 0
-		
-		# --- NUEVO: Limpiamos los restos del nivel viejo y despertamos al spawner ---
 		limpiar_y_rearmar_mapa()
-		
-		# Si tuvo 1 error, le mostramos la pantalla de victoria con el repaso incluido
-		if repaso_final != "":
-			Global.texto_repaso = repaso_final
-			DialogueManager.show_example_dialogue_balloon(load("res://Dialogos/Nivel1.dialogue"), "pantalla_victoria_repaso")
-		else:
-			DialogueManager.show_example_dialogue_balloon(load("res://Dialogos/Nivel1.dialogue"), "pantalla_victoria_perfecta")
+		# El mismo diálogo muestra el resultado y conserva el repaso.
 
 # =============================================================
 # CONTROL DE MOVIMIENTO PARA LA TRIVIA
 # =============================================================
 func congelar_juego():
-	# find_child busca en todo el árbol de la escena actual al nodo llamado "Jugador"
-	var jugador = get_tree().current_scene.find_child("Jugador")
-	if jugador:
-		# 1. Frenamos el vector de velocidad a cero absoluto para detener el movimiento físico
-		jugador.velocity = Vector2.ZERO
-		
-		# 2. Llamamos a su propia función para forzar el estado quieto (idle) 
-		# respetando perfectamente la última dirección en la que miraba (arriba, abajo, etc.)
-		if jugador.has_method("actualizar_animacion_y_direccion"):
-			jugador.actualizar_animacion_y_direccion(Vector2.ZERO)
-		
-		# 3. Bloqueamos el procesamiento de físicas para que ignore las flechas del teclado/mando
-		jugador.set_physics_process(false)
-	
-	# --- SOLUCIÓN AL BUG DE REPASO REPETIDO ---
-	# Cada vez que el juego se congela para empezar una trivia (ya sea por moneda o botón),
-	# vaciamos por completo el texto de repaso del intento anterior.
+	fallos = 0
 	texto_repaso = ""
+	bloquear_movimiento_dialogo()
+
+
+func bloquear_movimiento_dialogo():
+	var jugador = _buscar_nodo_actual("Jugador")
+	if jugador:
+		jugador.velocity = Vector2.ZERO
+		# No interrumpir un golpe o una animación que espera animation_finished.
+		if jugador.has_method("actualizar_animacion_y_direccion") and not jugador.atacando and not jugador.animando_espada:
+			jugador.actualizar_animacion_y_direccion(Vector2.ZERO)
+		jugador.set_physics_process(false)
+
 
 func descongelar_juego():
-	var jugador = get_tree().current_scene.find_child("Jugador")
-	if jugador:
-		# Volvemos a encender el script del jugador para regresarle el control total
+	if hay_dialogo_activo():
+		return
+	var jugador = _buscar_nodo_actual("Jugador")
+	if jugador and jugador.vida_actual > 0:
 		jugador.set_physics_process(true)
 
 # =============================================================
@@ -119,13 +144,13 @@ func descongelar_juego():
 # =============================================================
 # Muestra el botón en pantalla para retomar la trivia cuando el jugador quiera.
 func mostrar_boton_trivia():
-	var boton = get_tree().current_scene.find_child("BotonTrivia")
+	var boton = _buscar_nodo_actual("BotonTrivia")
 	if boton:
 		boton.visible = true
 
 # Oculta el botón una vez que el jugador ya decide responder.
 func ocultar_boton_trivia():
-	var boton = get_tree().current_scene.find_child("BotonTrivia")
+	var boton = _buscar_nodo_actual("BotonTrivia")
 	if boton:
 		boton.visible = false
 
@@ -147,7 +172,7 @@ func limpiar_y_rearmar_mapa():
 		moneda.queue_free() # Las borramos por completo del juego
 		
 	# 2. Buscamos el script del Spawner en la escena actual para resetear su conteo
-	var spawner = get_tree().current_scene.find_child("Spawner")
+	var spawner = _buscar_nodo_actual("Spawner")
 	if spawner:
 		spawner.monedas_en_mapa = 0 # Le decimos que el mapa está vacío
 		# Si tu spawner tiene un nodo Timer interno, lo forzamos a reiniciarse

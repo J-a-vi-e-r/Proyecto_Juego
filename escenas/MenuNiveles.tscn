@@ -1,0 +1,796 @@
+[gd_scene format=3 uid="uid://bhrkwywypt5pv"]
+
+[ext_resource type="Script" uid="uid://c8a0r8yg7po84" path="res://scripts/menu_niveles.gd" id="1_khmo0"]
+[ext_resource type="Texture2D" uid="uid://cau868pqaaitn" path="res://Assets/UI/Menu Niveles/fondo_tablero_vacio.png" id="2_0gxth"]
+[ext_resource type="FontFile" uid="uid://dec4ihlhtvkon" path="res://Assets/Fonts/DejaVuSerif-Bold.ttf" id="3_v2rn6"]
+[ext_resource type="Texture2D" uid="uid://dho01pd53buv0" path="res://Assets/UI/Menu Niveles/Placa pixelada de regreso azul y oro.png" id="4_5roeg"]
+[ext_resource type="Texture2D" uid="uid://bfivknastfnfk" path="res://Assets/UI/Menu Niveles/flecha_volver.png" id="5_te6gp"]
+[ext_resource type="Texture2D" uid="uid://criph0rpyjhp6" path="res://Assets/UI/Menu Niveles/base_tarjeta_nivel.png" id="6_ekytc"]
+[ext_resource type="Texture2D" uid="uid://c880ndnca6xmj" path="res://Assets/UI/Menu Niveles/miniatura_nivel_1_esquinas.png" id="7_ihxty"]
+[ext_resource type="Texture2D" uid="uid://bqrk2fxaut2dd" path="res://Assets/UI/Menu Niveles/candado.png" id="8_p0x3a"]
+[ext_resource type="Texture2D" uid="uid://d0jx5bljq6aqf" path="res://Assets/UI/Menu Niveles/Contorno turquesa neón de selección.png" id="9_8a8e8"]
+[ext_resource type="Texture2D" uid="uid://digrgr72c2a4b" path="res://Assets/UI/Menu Niveles/Miniatura pixelada con esquinas transparentes-1.png" id="10_xmijp"]
+[ext_resource type="Texture2D" uid="uid://b2sm5du5moudy" path="res://Assets/UI/Menu Niveles/Miniatura pixel art con esquinas transparentes.png" id="11_wx0ys"]
+[ext_resource type="Texture2D" uid="uid://u62s4av44ob0" path="res://Assets/UI/Menu Niveles/libro.png" id="12_v2rn6"]
+[ext_resource type="Texture2D" uid="uid://dedusludsceqq" path="res://Assets/UI/Menu Niveles/separador_ornamental_compacto.png" id="13_te6gp"]
+[ext_resource type="Texture2D" uid="uid://ckc8e3h8y3a5d" path="res://Assets/UI/Menu Niveles/Botón medieval dorado con centro turquesa.png" id="14_ekytc"]
+[ext_resource type="Texture2D" uid="uid://pevusldt11x7" path="res://Assets/UI/Menu Niveles/imagen nivel 1 detalles.png" id="14_ihxty"]
+[ext_resource type="Texture2D" uid="uid://w1elaq3ltxco" path="res://Assets/UI/Menu Niveles/Contorno turquesa del botón de jugar.png" id="16_8a8e8"]
+[ext_resource type="AudioStream" uid="uid://db3dmf6t0cxn6" path="res://Assets/Sonidos/ui_mover.wav" id="17_xmijp"]
+[ext_resource type="AudioStream" uid="uid://bgr28ig8hjdge" path="res://Assets/Sonidos/ui_confirmar.wav" id="18_wx0ys"]
+
+[node name="MenuNiveles" type="Control" unique_id=1645491970]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_khmo0")
+
+[node name="FondoTablero" type="TextureRect" parent="." unique_id=770454463]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0gxth")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=1939603150]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 56.0
+offset_right = 454.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("3_v2rn6")
+theme_override_font_sizes/font_size = 20
+text = "SELECCIONA EL NIVEL"
+
+[node name="BotonVolver" type="TextureButton" parent="." unique_id=738961421]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00625
+anchor_top = 0.013888889
+anchor_right = 0.2484375
+anchor_bottom = 0.18333334
+texture_normal = ExtResource("4_5roeg")
+ignore_texture_size = true
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BotonVolver" unique_id=1558488003]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_top = 18.0
+offset_right = 48.5
+offset_bottom = 42.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="BotonVolver/HBoxContainer" unique_id=470565036]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("5_te6gp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="BotonVolver/HBoxContainer" unique_id=796115741]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("3_v2rn6")
+theme_override_font_sizes/font_size = 15
+text = "VOLVER"
+
+[node name="BordeSeleccion" type="TextureRect" parent="BotonVolver" unique_id=2060490077]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 8.0
+offset_right = -4.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_8a8e8")
+expand_mode = 1
+
+[node name="CuadriculaNiveles" type="GridContainer" parent="." unique_id=1258344770]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0890625
+anchor_top = 0.26944444
+anchor_right = 0.684375
+anchor_bottom = 0.8361111
+theme_override_constants/h_separation = 7
+columns = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="BotonNivel1" type="TextureButton" parent="CuadriculaNiveles" unique_id=1312816871]
+custom_minimum_size = Vector2(90, 100)
+layout_mode = 2
+texture_normal = ExtResource("6_ekytc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ImagenNivel" type="TextureRect" parent="CuadriculaNiveles/BotonNivel1" unique_id=1666051330]
+light_mask = 3
+layout_mode = 0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 85.0
+offset_bottom = 76.0
+texture = ExtResource("7_ihxty")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CuadriculaNiveles/BotonNivel1" unique_id=1040868600]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -22.0
+offset_right = 31.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.15294118, 0.105882354, 0.07058824, 1)
+theme_override_fonts/font = ExtResource("3_v2rn6")
+theme_override_font_sizes/font_size = 13
+text = "NIVEL 1"
+
+[node name="IconoCandado" type="TextureRect" parent="CuadriculaNiveles/BotonNivel1" unique_id=1788167359]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -11.5
+offset_right = 14.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_p0x3a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BordeSeleccion" type="TextureRect" parent="CuadriculaNiveles/BotonNivel1" unique_id=2039991971]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -11.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_8a8e8")
+expand_mode = 1
+
+[node name="BotonNivel2" type="TextureButton" parent="CuadriculaNiveles" unique_id=869839556]
+custom_minimum_size = Vector2(90, 100)
+layout_mode = 2
+texture_normal = ExtResource("6_ekytc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ImagenNivel" type="TextureRect" parent="CuadriculaNiveles/BotonNivel2" unique_id=1136007733]
+light_mask = 3
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 85.0
+offset_bottom = 76.0
+texture = ExtResource("10_xmijp")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CuadriculaNiveles/BotonNivel2" unique_id=180429350]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -22.0
+offset_right = 31.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.15294118, 0.105882354, 0.07058824, 1)
+theme_override_fonts/font = ExtResource("3_v2rn6")
+theme_override_font_sizes/font_size = 13
+text = "NIVEL 2"
+
+[node name="IconoCandado" type="TextureRect" parent="CuadriculaNiveles/BotonNivel2" unique_id=856482066]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -11.5
+offset_right = 14.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_p0x3a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BordeSeleccion" type="TextureRect" parent="CuadriculaNiveles/BotonNivel2" unique_id=1726709623]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -11.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_8a8e8")
+expand_mode = 1
+
+[node name="BotonNivel3" type="TextureButton" parent="CuadriculaNiveles" unique_id=505812411]
+custom_minimum_size = Vector2(90, 100)
+layout_mode = 2
+texture_normal = ExtResource("6_ekytc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ImagenNivel" type="TextureRect" parent="CuadriculaNiveles/BotonNivel3" unique_id=435370250]
+light_mask = 3
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 85.0
+offset_bottom = 76.0
+texture = ExtResource("11_wx0ys")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CuadriculaNiveles/BotonNivel3" unique_id=1287512531]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -22.0
+offset_right = 31.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.15294118, 0.105882354, 0.07058824, 1)
+theme_override_fonts/font = ExtResource("3_v2rn6")
+theme_override_font_sizes/font_size = 13
+text = "NIVEL 3"
+
+[node name="IconoCandado" type="TextureRect" parent="CuadriculaNiveles/BotonNivel3" unique_id=1383387492]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -11.5
+offset_right = 14.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_p0x3a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BordeSeleccion" type="TextureRect" parent="CuadriculaNiveles/BotonNivel3" unique_id=1666250774]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -11.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_8a8e8")
+expand_mode = 1
+
+[node name="BotonNivel4" type="TextureButton" parent="CuadriculaNiveles" unique_id=387637222]
+custom_minimum_size = Vector2(90, 100)
+layout_mode = 2
+texture_normal = ExtResource("6_ekytc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ImagenNivel" type="TextureRect" parent="CuadriculaNiveles/BotonNivel4" unique_id=726244713]
+light_mask = 3
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 85.0
+offset_bottom = 76.0
+texture = ExtResource("11_wx0ys")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CuadriculaNiveles/BotonNivel4" unique_id=642036746]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -22.0
+offset_right = 31.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.15294118, 0.105882354, 0.07058824, 1)
+theme_override_fonts/font = ExtResource("3_v2rn6")
+theme_override_font_sizes/font_size = 13
+text = "NIVEL 4"
+
+[node name="IconoCandado" type="TextureRect" parent="CuadriculaNiveles/BotonNivel4" unique_id=1617309607]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -11.5
+offset_right = 14.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_p0x3a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BordeSeleccion" type="TextureRect" parent="CuadriculaNiveles/BotonNivel4" unique_id=484507152]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -11.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_8a8e8")
+expand_mode = 1
+
+[node name="BotonNivel5" type="TextureButton" parent="CuadriculaNiveles" unique_id=196658423]
+custom_minimum_size = Vector2(90, 100)
+layout_mode = 2
+texture_normal = ExtResource("6_ekytc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ImagenNivel" type="TextureRect" parent="CuadriculaNiveles/BotonNivel5" unique_id=57643015]
+light_mask = 3
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 85.0
+offset_bottom = 76.0
+texture = ExtResource("11_wx0ys")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CuadriculaNiveles/BotonNivel5" unique_id=1455147982]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -22.0
+offset_right = 31.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.15294118, 0.105882354, 0.07058824, 1)
+theme_override_fonts/font = ExtResource("3_v2rn6")
+theme_override_font_sizes/font_size = 13
+text = "NIVEL 5"
+
+[node name="IconoCandado" type="TextureRect" parent="CuadriculaNiveles/BotonNivel5" unique_id=633523132]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -11.5
+offset_right = 14.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_p0x3a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BordeSeleccion" type="TextureRect" parent="CuadriculaNiveles/BotonNivel5" unique_id=1778869305]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -11.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_8a8e8")
+expand_mode = 1
+
+[node name="BotonNivel6" type="TextureButton" parent="CuadriculaNiveles" unique_id=1677774555]
+custom_minimum_size = Vector2(90, 100)
+layout_mode = 2
+texture_normal = ExtResource("6_ekytc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ImagenNivel" type="TextureRect" parent="CuadriculaNiveles/BotonNivel6" unique_id=1910825294]
+light_mask = 3
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 85.0
+offset_bottom = 76.0
+texture = ExtResource("11_wx0ys")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CuadriculaNiveles/BotonNivel6" unique_id=355168867]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -22.0
+offset_right = 31.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.15294118, 0.105882354, 0.07058824, 1)
+theme_override_fonts/font = ExtResource("3_v2rn6")
+theme_override_font_sizes/font_size = 13
+text = "NIVEL 6"
+
+[node name="IconoCandado" type="TextureRect" parent="CuadriculaNiveles/BotonNivel6" unique_id=1398001919]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -11.5
+offset_right = 14.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_p0x3a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BordeSeleccion" type="TextureRect" parent="CuadriculaNiveles/BotonNivel6" unique_id=1541833417]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -11.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_8a8e8")
+expand_mode = 1
+
+[node name="BotonNivel7" type="TextureButton" parent="CuadriculaNiveles" unique_id=1764174696]
+custom_minimum_size = Vector2(90, 100)
+layout_mode = 2
+texture_normal = ExtResource("6_ekytc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ImagenNivel" type="TextureRect" parent="CuadriculaNiveles/BotonNivel7" unique_id=409978024]
+light_mask = 3
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 85.0
+offset_bottom = 76.0
+texture = ExtResource("11_wx0ys")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CuadriculaNiveles/BotonNivel7" unique_id=1098395120]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -22.0
+offset_right = 31.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.15294118, 0.105882354, 0.07058824, 1)
+theme_override_fonts/font = ExtResource("3_v2rn6")
+theme_override_font_sizes/font_size = 13
+text = "NIVEL 7"
+
+[node name="IconoCandado" type="TextureRect" parent="CuadriculaNiveles/BotonNivel7" unique_id=425867625]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -11.5
+offset_right = 14.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_p0x3a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BordeSeleccion" type="TextureRect" parent="CuadriculaNiveles/BotonNivel7" unique_id=163222812]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -11.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_8a8e8")
+expand_mode = 1
+
+[node name="BotonNivel8" type="TextureButton" parent="CuadriculaNiveles" unique_id=1576705650]
+custom_minimum_size = Vector2(90, 100)
+layout_mode = 2
+texture_normal = ExtResource("6_ekytc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ImagenNivel" type="TextureRect" parent="CuadriculaNiveles/BotonNivel8" unique_id=1149714798]
+light_mask = 3
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 85.0
+offset_bottom = 76.0
+texture = ExtResource("11_wx0ys")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CuadriculaNiveles/BotonNivel8" unique_id=710882611]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -22.0
+offset_right = 31.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.15294118, 0.105882354, 0.07058824, 1)
+theme_override_fonts/font = ExtResource("3_v2rn6")
+theme_override_font_sizes/font_size = 13
+text = "NIVEL 8"
+
+[node name="IconoCandado" type="TextureRect" parent="CuadriculaNiveles/BotonNivel8" unique_id=397600200]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -11.5
+offset_right = 14.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_p0x3a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BordeSeleccion" type="TextureRect" parent="CuadriculaNiveles/BotonNivel8" unique_id=698073507]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -11.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_8a8e8")
+expand_mode = 1
+
+[node name="BarraAbajo" type="HBoxContainer" parent="." unique_id=256228601]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 307.0
+offset_right = 416.0
+offset_bottom = 330.0
+
+[node name="IconoLibro" type="TextureRect" parent="BarraAbajo" unique_id=750425755]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("12_v2rn6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Texto" type="Label" parent="BarraAbajo" unique_id=1681589291]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("3_v2rn6")
+theme_override_font_sizes/font_size = 12
+text = "Para saltar niveles, aprueba el examen."
+
+[node name="PanelDetalle" type="Control" parent="." unique_id=1171547173]
+anchors_preset = 0
+offset_left = 446.0
+offset_top = 96.0
+offset_right = 603.0
+offset_bottom = 325.0
+
+[node name="NumeroNivel" type="Label" parent="PanelDetalle" unique_id=1190989542]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.0
+offset_right = 51.0
+offset_bottom = 32.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("3_v2rn6")
+theme_override_font_sizes/font_size = 26
+text = "Nivel 1"
+
+[node name="LineaDivisora" type="TextureRect" parent="PanelDetalle" unique_id=1721826602]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 0
+offset_top = 28.0
+offset_right = 157.0
+offset_bottom = 38.0
+texture = ExtResource("13_te6gp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NombreNivel" type="Label" parent="PanelDetalle" unique_id=837467673]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.5
+offset_top = 38.0
+offset_right = 45.5
+offset_bottom = 50.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("3_v2rn6")
+theme_override_font_sizes/font_size = 9
+text = "Comienza la Aventura"
+horizontal_alignment = 1
+
+[node name="PreviewNivel" type="TextureRect" parent="PanelDetalle" unique_id=693670243]
+custom_minimum_size = Vector2(125, 70)
+layout_mode = 0
+offset_left = 17.0
+offset_top = 52.0
+offset_right = 142.0
+offset_bottom = 122.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_ihxty")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ObjetivosNivel" type="RichTextLabel" parent="PanelDetalle" unique_id=1613086464]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 125.0
+offset_right = 156.0
+offset_bottom = 181.0
+theme_override_colors/default_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/normal_font = ExtResource("3_v2rn6")
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+autowrap_mode = 2
+
+[node name="BotonJugar" type="TextureButton" parent="PanelDetalle" unique_id=1710101212]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 0
+offset_top = 175.0
+offset_right = 157.0
+offset_bottom = 225.0
+texture_normal = ExtResource("14_ekytc")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PanelDetalle/BotonJugar" unique_id=1586227712]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 15.0
+offset_right = 108.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("3_v2rn6")
+text = "JUGAR"
+
+[node name="BordeSeleccion" type="TextureRect" parent="PanelDetalle/BotonJugar" unique_id=1231865866]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_right = 1.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_8a8e8")
+expand_mode = 1
+
+[node name="SonidoHover" type="AudioStreamPlayer2D" parent="." unique_id=870686461]
+stream = ExtResource("17_xmijp")
+
+[node name="SonidoClick" type="AudioStreamPlayer2D" parent="." unique_id=992195335]
+stream = ExtResource("18_wx0ys")

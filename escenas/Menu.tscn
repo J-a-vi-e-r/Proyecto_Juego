@@ -1,7 +1,257 @@
 [gd_scene format=3 uid="uid://brlj2dol7trte"]
 
 [ext_resource type="Script" uid="uid://jdx0x5vwskai" path="res://scripts/menu.gd" id="1_37x5u"]
-[ext_resource type="Texture2D" uid="uid://bqei2o3dnepht" path="res://Assets/Mundo/pngtree-nobody-interface-of-pixel-game-platform-picture-image_1962988.jpg" id="1_hw27t"]
+[ext_resource type="Shader" uid="uid://ddhe86tl4b6ai" path="res://Assets/Shaders/Paisaje.gdshader" id="2_0lotp"]
+[ext_resource type="Texture2D" uid="uid://b5rxufehh7dag" path="res://Assets/UI/MenuPrincipal/mascaras_agua_espuma_luces.png" id="3_jg6t6"]
+[ext_resource type="Texture2D" uid="uid://cuw24862rul0a" path="res://Assets/UI/MenuPrincipal/fondo.png" id="4_tjkoc"]
+[ext_resource type="Shader" uid="uid://dfhjgb5yk2n2k" path="res://Assets/Shaders/Viento.gdshader" id="5_cexf4"]
+[ext_resource type="Texture2D" uid="uid://c7ctfwbo4ic71" path="res://Assets/UI/MenuPrincipal/arboles.png" id="6_k3u24"]
+[ext_resource type="Texture2D" uid="uid://bf2455qn6fd" path="res://Assets/UI/MenuPrincipal/hoja_1.png" id="7_or5px"]
+[ext_resource type="Texture2D" uid="uid://blfp2m42xwsco" path="res://Assets/UI/MenuPrincipal/hoja_3.png" id="8_gaios"]
+[ext_resource type="Texture2D" uid="uid://b2wa6r2t67ymy" path="res://Assets/UI/MenuPrincipal/farol_4x2.png" id="9_jg6t6"]
+[ext_resource type="Texture2D" uid="uid://iufjcl63xgsl" path="res://Assets/UI/MenuPrincipal/titulo_atlantisis_adventure.png" id="10_dhdci"]
+[ext_resource type="Texture2D" uid="uid://cl1aiwjxmmrer" path="res://Assets/UI/MenuPrincipal/boton_sin_texto.png" id="11_71ta1"]
+[ext_resource type="FontFile" uid="uid://dec4ihlhtvkon" path="res://Assets/Fonts/DejaVuSerif-Bold.ttf" id="12_ju286"]
+[ext_resource type="Texture2D" uid="uid://dgmn8lge7b0qj" path="res://Assets/UI/MenuPrincipal/contorno_seleccion_azul.png" id="13_kfywo"]
+[ext_resource type="AudioStream" uid="uid://db3dmf6t0cxn6" path="res://Assets/Sonidos/ui_mover.wav" id="14_erxh5"]
+[ext_resource type="AudioStream" uid="uid://bgr28ig8hjdge" path="res://Assets/Sonidos/ui_confirmar.wav" id="15_k4qh2"]
+[ext_resource type="Texture2D" uid="uid://bcpfg21fftiik" path="res://Assets/UI/PanelTutorial/fondo_panel_vacio.png" id="16_puxgm"]
+[ext_resource type="Script" uid="uid://chifrwgst0746" path="res://escenas/PanelComoJugar.gd" id="16_vu06q"]
+[ext_resource type="Texture2D" uid="uid://cxmf6o8u8hlkn" path="res://Assets/UI/PanelTutorial/botones/fondo_boton_arriba.png" id="17_cbkhp"]
+[ext_resource type="Texture2D" uid="uid://drkd2nte8ss00" path="res://Assets/UI/PanelTutorial/contornos/contorno_botones_arriba.png" id="18_vu06q"]
+[ext_resource type="Texture2D" uid="uid://bvoa75kgj0uds" path="res://Assets/UI/PanelTutorial/botones/boton_cerrar.png" id="19_lqqdu"]
+[ext_resource type="Texture2D" uid="uid://lvxll6tlhtk4" path="res://Assets/UI/PanelTutorial/contornos/Contorno_boton_cerrar.png" id="20_asgeo"]
+[ext_resource type="Texture2D" uid="uid://do68knfegmv63" path="res://Assets/UI/PanelTutorial/teclas/W_2_frames.png" id="21_be6uu"]
+[ext_resource type="Texture2D" uid="uid://cq1y206dofe5x" path="res://Assets/UI/PanelTutorial/teclas/A_2_frames.png" id="22_4e1ic"]
+[ext_resource type="Texture2D" uid="uid://bq4yi40wpsf3d" path="res://Assets/UI/PanelTutorial/teclas/S_2_frames.png" id="23_uq8sc"]
+[ext_resource type="Texture2D" uid="uid://cxpv7ewlunp4r" path="res://Assets/UI/PanelTutorial/teclas/D_2_frames.png" id="24_op1ye"]
+[ext_resource type="Texture2D" uid="uid://biwfajrjw53fi" path="res://Assets/UI/PanelTutorial/referencias/Marco.png" id="25_o1dkq"]
+[ext_resource type="Texture2D" uid="uid://vonloyq8fv63" path="res://Assets/UI/PanelTutorial/referencias/Héroe pixelado de espaldas en el bosque-1.png" id="26_8hagy"]
+[ext_resource type="Texture2D" uid="uid://dki5tua3rl7of" path="res://Assets/UI/PanelTutorial/referencias/Héroe pixelado de capa verde-2.png" id="27_gnmx8"]
+[ext_resource type="Texture2D" uid="uid://b7avp5evgawwv" path="res://Assets/UI/PanelTutorial/referencias/Héroe pixelado en bosque enmarcado-3.png" id="28_s3sit"]
+[ext_resource type="Texture2D" uid="uid://bvgt7qe6rk4ok" path="res://Assets/UI/PanelTutorial/referencias/Héroe pixelado de perfil en bosque-4.png" id="29_04hv1"]
+[ext_resource type="Texture2D" uid="uid://bno2uwp66pnrh" path="res://Assets/UI/PanelTutorial/botones/fondo_boton_continuar.png" id="31_lqqdu"]
+[ext_resource type="Texture2D" uid="uid://cj2lmssvd31sk" path="res://Assets/UI/PanelTutorial/contornos/contorno_boton_continuar.png" id="32_lqqdu"]
+[ext_resource type="Texture2D" uid="uid://basekb1tuoyeu" path="res://Assets/UI/PanelTutorial/referencias/01_sacar_espada.png" id="33_8hagy"]
+[ext_resource type="Texture2D" uid="uid://c2w1s6e1bpdqq" path="res://Assets/UI/PanelTutorial/referencias/02_atacar.png" id="34_gnmx8"]
+[ext_resource type="Texture2D" uid="uid://bapkvxojn68ds" path="res://Assets/UI/PanelTutorial/referencias/03_dirigir_golpe.png" id="35_s3sit"]
+[ext_resource type="Texture2D" uid="uid://d71vd6qncri8" path="res://Assets/UI/PanelTutorial/teclas/E_2_frames.png" id="36_04hv1"]
+[ext_resource type="Texture2D" uid="uid://clu2272yifb40" path="res://Assets/UI/PanelTutorial/teclas/Raton_2_frames.png" id="37_gvp20"]
+[ext_resource type="Texture2D" uid="uid://dwrbd2d7ljm4l" path="res://Assets/UI/PanelTutorial/botones/flechas_4_direcciones.png" id="38_0argx"]
+[ext_resource type="Texture2D" uid="uid://dll0h326gsqp1" path="res://Assets/UI/PanelTutorial/contornos/divisor_dorado.png" id="39_t3yds"]
+[ext_resource type="Texture2D" uid="uid://cmrxetfvar5p3" path="res://Assets/UI/PanelTutorial/referencias/01_explora_y_aprende.png" id="40_gvp20"]
+[ext_resource type="Texture2D" uid="uid://b8t4vlm1myv5n" path="res://Assets/UI/PanelTutorial/referencias/02_completar_misiones.png" id="41_0argx"]
+[ext_resource type="Texture2D" uid="uid://do6mcm5nd27mh" path="res://Assets/UI/PanelTutorial/referencias/03_aprueba_el_examen.png" id="42_t3yds"]
+[ext_resource type="Texture2D" uid="uid://dien5wrxp6wnb" path="res://Assets/UI/PanelTutorial/contornos/Separador dorado con libro abierto.png" id="43_ros4d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_45ur0"]
+shader = ExtResource("2_0lotp")
+shader_parameter/mascaras = ExtResource("3_jg6t6")
+shader_parameter/fuerza_agua = 0.85
+shader_parameter/fuerza_luces = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fo0v4"]
+shader = ExtResource("5_cexf4")
+shader_parameter/fuerza = 3.0000001425
+shader_parameter/velocidad = 1.2
+
+[sub_resource type="Gradient" id="Gradient_5qp4l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjkoc"]
+atlas = ExtResource("9_jg6t6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cexf4"]
+atlas = ExtResource("9_jg6t6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3u24"]
+atlas = ExtResource("9_jg6t6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or5px"]
+atlas = ExtResource("9_jg6t6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gaios"]
+atlas = ExtResource("9_jg6t6")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhdci"]
+atlas = ExtResource("9_jg6t6")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71ta1"]
+atlas = ExtResource("9_jg6t6")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju286"]
+atlas = ExtResource("9_jg6t6")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i4s4l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjkoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cexf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3u24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or5px")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gaios")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhdci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71ta1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ju286")
+}],
+"loop": 1,
+"name": &"LuzFarol",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvp20"]
+atlas = ExtResource("21_be6uu")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0argx"]
+atlas = ExtResource("21_be6uu")
+region = Rect2(144, 0, 144, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fo0v4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvp20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0argx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3yds"]
+atlas = ExtResource("22_4e1ic")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ros4d"]
+atlas = ExtResource("22_4e1ic")
+region = Rect2(144, 0, 144, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lfwqu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3yds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ros4d")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m3in"]
+atlas = ExtResource("23_uq8sc")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw8gl"]
+atlas = ExtResource("23_uq8sc")
+region = Rect2(144, 0, 144, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_45ur0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m3in")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw8gl")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iciep"]
+atlas = ExtResource("24_op1ye")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0o34"]
+atlas = ExtResource("24_op1ye")
+region = Rect2(144, 0, 144, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qp4l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iciep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0o34")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvrqq"]
+atlas = ExtResource("36_04hv1")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox55g"]
+atlas = ExtResource("36_04hv1")
+region = Rect2(144, 0, 144, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dq52s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvrqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox55g")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukmnv"]
+atlas = ExtResource("37_gvp20")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7bhj"]
+atlas = ExtResource("37_gvp20")
+region = Rect2(144, 0, 144, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_adeyi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukmnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7bhj")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="Menu" type="Control" unique_id=1277187558]
 layout_mode = 3
@@ -12,47 +262,1066 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_37x5u")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1545693672]
+[node name="Fondo" type="TextureRect" parent="." unique_id=2133409999]
+material = SubResource("ShaderMaterial_45ur0")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.48178947, 0.48178947, 0.48178947, 1)
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1584921894]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_hw27t")
+mouse_filter = 2
+texture = ExtResource("4_tjkoc")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1608431271]
+[node name="Arboles" type="TextureRect" parent="." unique_id=901524515]
+material = SubResource("ShaderMaterial_fo0v4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_k3u24")
+expand_mode = 1
+
+[node name="Hojas" type="Node2D" parent="." unique_id=1471399203]
+
+[node name="HojasRoble" type="CPUParticles2D" parent="Hojas" unique_id=65803266]
+position = Vector2(180, 10)
+texture = ExtResource("7_or5px")
+lifetime = 24.0
+preprocess = 24.0
+emission_shape = 3
+emission_rect_extents = Vector2(180, 10)
+direction = Vector2(1, 1)
+spread = 15.0
+gravity = Vector2(0.5, 2.5)
+initial_velocity_min = 27.0
+initial_velocity_max = 43.0
+angular_velocity_min = -28.0
+angular_velocity_max = 36.0
+scale_amount_min = 0.15
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_5qp4l")
+
+[node name="HojasRoble2" type="CPUParticles2D" parent="Hojas" unique_id=992191688]
+position = Vector2(180, 10)
+texture = ExtResource("8_gaios")
+lifetime = 24.0
+preprocess = 12.0
+emission_shape = 3
+emission_rect_extents = Vector2(180, 10)
+direction = Vector2(1, 1)
+spread = 15.0
+gravity = Vector2(0.5, 2.5)
+initial_velocity_min = 27.0
+initial_velocity_max = 43.0
+angular_velocity_min = -28.0
+angular_velocity_max = 36.0
+scale_amount_min = 0.15
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_5qp4l")
+
+[node name="LuzFarol" type="AnimatedSprite2D" parent="." unique_id=1119822160]
+position = Vector2(471, 251)
+sprite_frames = SubResource("SpriteFrames_i4s4l")
+animation = &"LuzFarol"
+autoplay = "LuzFarol"
+frame_progress = 0.84527767
+
+[node name="Logo" type="TextureRect" parent="." unique_id=1100671823]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -4.0
+offset_right = 299.0
+offset_bottom = 145.0
+texture = ExtResource("10_dhdci")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ContenedorBotones" type="Control" parent="." unique_id=570616453]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BotonJugar" type="TextureButton" parent="ContenedorBotones" unique_id=735940022]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 120.0
+offset_right = 248.0
+offset_bottom = 179.0
+texture_normal = ExtResource("11_71ta1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ContenedorBotones/BotonJugar" unique_id=1279775271]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 20.0
+offset_right = 112.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 15
+text = "Jugar"
+
+[node name="BordeSeleccion" type="TextureRect" parent="ContenedorBotones/BotonJugar" unique_id=707656751]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_kfywo")
+expand_mode = 1
+
+[node name="BotonComoJugar" type="TextureButton" parent="ContenedorBotones" unique_id=1407598036]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 176.0
+offset_right = 248.0
+offset_bottom = 235.0
+texture_normal = ExtResource("11_71ta1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ContenedorBotones/BotonComoJugar" unique_id=1212928678]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 20.0
+offset_right = 138.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 15
+text = "Como Jugar"
+
+[node name="BordeSeleccion" type="TextureRect" parent="ContenedorBotones/BotonComoJugar" unique_id=1698560111]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_kfywo")
+expand_mode = 1
+
+[node name="BotonOpciones" type="TextureButton" parent="ContenedorBotones" unique_id=767234905]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 232.0
+offset_right = 248.0
+offset_bottom = 291.0
+texture_normal = ExtResource("11_71ta1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ContenedorBotones/BotonOpciones" unique_id=1788045532]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 20.0
+offset_right = 128.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 15
+text = "Opciones"
+
+[node name="BordeSeleccion" type="TextureRect" parent="ContenedorBotones/BotonOpciones" unique_id=812677079]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_kfywo")
+expand_mode = 1
+
+[node name="BotonSalir" type="TextureButton" parent="ContenedorBotones" unique_id=914562112]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 288.0
+offset_right = 248.0
+offset_bottom = 347.0
+texture_normal = ExtResource("11_71ta1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ContenedorBotones/BotonSalir" unique_id=1684411559]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 20.0
+offset_right = 108.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 15
+text = "Salir"
+
+[node name="BordeSeleccion" type="TextureRect" parent="ContenedorBotones/BotonSalir" unique_id=1509259136]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_kfywo")
+expand_mode = 1
+
+[node name="SonidoHover" type="AudioStreamPlayer2D" parent="." unique_id=433312494]
+stream = ExtResource("14_erxh5")
+
+[node name="SonidoClick" type="AudioStreamPlayer2D" parent="." unique_id=950825398]
+stream = ExtResource("15_k4qh2")
+
+[node name="PanelComoJugar" type="Control" parent="." unique_id=1082432656]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_vu06q")
+
+[node name="Fondo" type="TextureRect" parent="PanelComoJugar" unique_id=113889336]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_puxgm")
+expand_mode = 1
+
+[node name="VentanasArriba" type="HBoxContainer" parent="PanelComoJugar/Fondo" unique_id=428697115]
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -41.5
-offset_top = -70.0
-offset_right = 41.5
-offset_bottom = 70.0
+offset_left = -229.0
+offset_top = -101.0
+offset_right = 229.0
+offset_bottom = -61.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 40
 
-[node name="Jugar" type="Button" parent="VBoxContainer" unique_id=1811087208]
+[node name="VentanaMovimiento" type="TextureRect" parent="PanelComoJugar/Fondo/VentanasArriba" unique_id=1855106472]
+custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
-text = "Jugar"
+texture = ExtResource("17_cbkhp")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Salir" type="Button" parent="VBoxContainer" unique_id=1519996043]
+[node name="Label" type="Label" parent="PanelComoJugar/Fondo/VentanasArriba/VentanaMovimiento" unique_id=256185609]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -8.5
+offset_right = 43.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 13
+text = "Movimiento"
+
+[node name="BordeSeleccion" type="TextureRect" parent="PanelComoJugar/Fondo/VentanasArriba/VentanaMovimiento" unique_id=154067779]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("18_vu06q")
+expand_mode = 1
+
+[node name="VentanaCombate" type="TextureRect" parent="PanelComoJugar/Fondo/VentanasArriba" unique_id=1502872713]
+custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
-text = "Salir"
+texture = ExtResource("17_cbkhp")
+expand_mode = 1
+stretch_mode = 5
 
-[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
-[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]
+[node name="Label" type="Label" parent="PanelComoJugar/Fondo/VentanasArriba/VentanaCombate" unique_id=2019391644]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -8.5
+offset_right = 32.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 13
+text = "Combate"
+
+[node name="BordeSeleccion" type="TextureRect" parent="PanelComoJugar/Fondo/VentanasArriba/VentanaCombate" unique_id=359139906]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("18_vu06q")
+expand_mode = 1
+
+[node name="VentanaObjetivo" type="TextureRect" parent="PanelComoJugar/Fondo/VentanasArriba" unique_id=2135370731]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+texture = ExtResource("17_cbkhp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PanelComoJugar/Fondo/VentanasArriba/VentanaObjetivo" unique_id=1444758865]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = -8.5
+offset_right = 30.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 13
+text = "Objetivo"
+
+[node name="BordeSeleccion" type="TextureRect" parent="PanelComoJugar/Fondo/VentanasArriba/VentanaObjetivo" unique_id=1377375080]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("18_vu06q")
+expand_mode = 1
+
+[node name="BotonCerrar" type="TextureButton" parent="PanelComoJugar/Fondo" unique_id=713429158]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 0
+offset_left = 464.0
+offset_top = 32.0
+offset_right = 614.0
+offset_bottom = 96.0
+texture_normal = ExtResource("19_lqqdu")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BordeSeleccion" type="TextureRect" parent="PanelComoJugar/Fondo/BotonCerrar" unique_id=1423010286]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 43.0
+offset_right = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("20_asgeo")
+expand_mode = 1
+
+[node name="Titulo" type="Label" parent="PanelComoJugar/Fondo" unique_id=241210566]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_top = 46.0
+offset_right = 81.0
+offset_bottom = 75.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 24
+text = "Cómo Jugar"
+
+[node name="PaginaMovimiento" type="Control" parent="PanelComoJugar/Fondo" unique_id=2079185486]
+anchors_preset = 0
+offset_left = 59.0
+offset_top = 114.0
+offset_right = 581.0
+offset_bottom = 296.0
+
+[node name="TeclaW" type="AnimatedSprite2D" parent="PanelComoJugar/Fondo/PaginaMovimiento" unique_id=180497283]
+position = Vector2(165, 30)
+scale = Vector2(0.3, 0.282)
+sprite_frames = SubResource("SpriteFrames_fo0v4")
+autoplay = "default"
+frame_progress = 0.24172598
+
+[node name="Label" type="Label" parent="PanelComoJugar/Fondo/PaginaMovimiento/TeclaW" unique_id=403831049]
+offset_left = 133.33333
+offset_top = -21.276596
+offset_right = 240.33333
+offset_bottom = 15.723404
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 30
+text = "Arriba"
+
+[node name="Label2" type="Label" parent="PanelComoJugar/Fondo/PaginaMovimiento/TeclaW" unique_id=1954994936]
+offset_left = -33.33333
+offset_top = 85.106384
+offset_right = 73.66667
+offset_bottom = 122.106384
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 30
+text = "Mantén W pulsada
+para ir hacia arriba."
+
+[node name="TeclaA" type="AnimatedSprite2D" parent="PanelComoJugar/Fondo/PaginaMovimiento" unique_id=830977343]
+position = Vector2(413, 30)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_lfwqu")
+autoplay = "default"
+frame_progress = 0.1360166
+
+[node name="Label" type="Label" parent="PanelComoJugar/Fondo/PaginaMovimiento/TeclaA" unique_id=1270792223]
+offset_left = 133.33333
+offset_top = -21.276596
+offset_right = 240.33333
+offset_bottom = 15.723404
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 30
+text = "Izquierda"
+
+[node name="Label2" type="Label" parent="PanelComoJugar/Fondo/PaginaMovimiento/TeclaA" unique_id=1984627934]
+offset_left = -33.33333
+offset_top = 85.106384
+offset_right = 73.66667
+offset_bottom = 122.106384
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 30
+text = "Mantén A pulsada
+para ir a la izquierda."
+
+[node name="TeclaS" type="AnimatedSprite2D" parent="PanelComoJugar/Fondo/PaginaMovimiento" unique_id=1554339325]
+position = Vector2(165, 126)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_45ur0")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="PanelComoJugar/Fondo/PaginaMovimiento/TeclaS" unique_id=1255438723]
+offset_left = 133.33333
+offset_top = -21.276596
+offset_right = 240.33333
+offset_bottom = 15.723404
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 30
+text = "Abajo"
+
+[node name="Label2" type="Label" parent="PanelComoJugar/Fondo/PaginaMovimiento/TeclaS" unique_id=973658674]
+offset_left = -33.33333
+offset_top = 85.106384
+offset_right = 73.66667
+offset_bottom = 122.106384
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 30
+text = "Mantén S pulsada
+para ir hacia abajo."
+
+[node name="TeclaD" type="AnimatedSprite2D" parent="PanelComoJugar/Fondo/PaginaMovimiento" unique_id=1452167781]
+position = Vector2(413.00003, 126)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_5qp4l")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="PanelComoJugar/Fondo/PaginaMovimiento/TeclaD" unique_id=679126790]
+offset_left = 133.33333
+offset_top = -21.276596
+offset_right = 240.33333
+offset_bottom = 15.723404
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 30
+text = "Derecha"
+
+[node name="Label2" type="Label" parent="PanelComoJugar/Fondo/PaginaMovimiento/TeclaD" unique_id=633241653]
+offset_left = -33.33333
+offset_top = 85.106384
+offset_right = 73.66667
+offset_bottom = 122.106384
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 30
+text = "Mantén D pulsada
+para ir a la derecha."
+
+[node name="CuadroW" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaMovimiento" unique_id=198040849]
+custom_minimum_size = Vector2(125, 75)
+layout_mode = 0
+offset_left = 13.0
+offset_top = 6.0
+offset_right = 138.0
+offset_bottom = 81.0
+texture = ExtResource("25_o1dkq")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaMovimiento/CuadroW" unique_id=1297688321]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 123.0
+offset_bottom = 72.0
+texture = ExtResource("26_8hagy")
+expand_mode = 1
+
+[node name="CuadroS" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaMovimiento" unique_id=106911346]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 102.0
+offset_right = 138.0
+offset_bottom = 177.0
+texture = ExtResource("25_o1dkq")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaMovimiento/CuadroS" unique_id=2071508693]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 118.0
+offset_bottom = 72.0
+texture = ExtResource("27_gnmx8")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CuadroA" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaMovimiento" unique_id=2071708092]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 6.0
+offset_right = 386.0
+offset_bottom = 81.0
+texture = ExtResource("25_o1dkq")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaMovimiento/CuadroA" unique_id=1708129103]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 118.0
+offset_bottom = 72.0
+texture = ExtResource("28_s3sit")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CuadroD" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaMovimiento" unique_id=1664637114]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 102.0
+offset_right = 386.0
+offset_bottom = 177.0
+texture = ExtResource("25_o1dkq")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaMovimiento/CuadroD" unique_id=2111118232]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 118.0
+offset_bottom = 72.0
+texture = ExtResource("29_04hv1")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="BotonSiguiente" type="TextureButton" parent="PanelComoJugar/Fondo" unique_id=404098602]
+layout_mode = 1
+offset_left = 447.0
+offset_top = 291.0
+offset_right = 571.0
+offset_bottom = 330.0
+texture_normal = ExtResource("31_lqqdu")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="PanelComoJugar/Fondo/BotonSiguiente" unique_id=2082568183]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -8.5
+offset_right = 35.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 13
+text = "Siguiente"
+
+[node name="BordeSeleccion" type="TextureRect" parent="PanelComoJugar/Fondo/BotonSiguiente" unique_id=2116853733]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("32_lqqdu")
+expand_mode = 1
+
+[node name="BotonVolver" type="TextureButton" parent="PanelComoJugar/Fondo" unique_id=509457686]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 291.0
+offset_right = 193.0
+offset_bottom = 330.0
+texture_normal = ExtResource("31_lqqdu")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="PanelComoJugar/Fondo/BotonVolver" unique_id=740869167]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -8.5
+offset_right = 31.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 13
+text = "Anterior"
+
+[node name="BordeSeleccion" type="TextureRect" parent="PanelComoJugar/Fondo/BotonVolver" unique_id=631243816]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("32_lqqdu")
+expand_mode = 1
+
+[node name="TextoPagina" type="Label" parent="PanelComoJugar/Fondo" unique_id=429695333]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -57.0
+offset_right = 18.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 14
+text = "1 / 3
+"
+
+[node name="PaginaCombate" type="Control" parent="PanelComoJugar/Fondo" unique_id=987314583]
+visible = false
+anchors_preset = 0
+offset_left = 59.0
+offset_top = 114.0
+offset_right = 581.0
+offset_bottom = 296.0
+
+[node name="Cuadros" type="HBoxContainer" parent="PanelComoJugar/Fondo/PaginaCombate" unique_id=1860453140]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_constants/separation = 25
+
+[node name="CuadroEspada" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaCombate/Cuadros" unique_id=37356778]
+custom_minimum_size = Vector2(150, 90)
+layout_mode = 2
+texture = ExtResource("25_o1dkq")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaCombate/Cuadros/CuadroEspada" unique_id=2127650132]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 148.0
+offset_bottom = 89.0
+texture = ExtResource("33_8hagy")
+expand_mode = 1
+
+[node name="CuadroAtacar" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaCombate/Cuadros" unique_id=846198948]
+custom_minimum_size = Vector2(150, 90)
+layout_mode = 2
+texture = ExtResource("25_o1dkq")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaCombate/Cuadros/CuadroAtacar" unique_id=1676832327]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 148.0
+offset_bottom = 89.0
+texture = ExtResource("34_gnmx8")
+expand_mode = 1
+
+[node name="CuadroDireccion" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaCombate/Cuadros" unique_id=1301059410]
+custom_minimum_size = Vector2(150, 90)
+layout_mode = 2
+texture = ExtResource("25_o1dkq")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaCombate/Cuadros/CuadroDireccion" unique_id=599423213]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 148.0
+offset_bottom = 88.0
+texture = ExtResource("35_s3sit")
+expand_mode = 1
+
+[node name="TeclaE" type="AnimatedSprite2D" parent="PanelComoJugar/Fondo/PaginaCombate" unique_id=1796377384]
+position = Vector2(46, 107)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_dq52s")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="PanelComoJugar/Fondo/PaginaCombate/TeclaE" unique_id=1798299194]
+offset_left = 99.99999
+offset_top = -33.333332
+offset_right = 349.0
+offset_bottom = 37.666668
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 28
+text = "Sacar y guardar
+espada"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelComoJugar/Fondo/PaginaCombate/TeclaE" unique_id=167033355]
+offset_left = -60.000004
+offset_top = 83.33333
+offset_right = 341.0
+offset_bottom = 146.33333
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 25
+text = "Pulsa E para sacar la espada
+o para guardarla."
+horizontal_alignment = 1
+
+[node name="ClickIzquierdo" type="AnimatedSprite2D" parent="PanelComoJugar/Fondo/PaginaCombate" unique_id=727061300]
+position = Vector2(220, 110)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_adeyi")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="PanelComoJugar/Fondo/PaginaCombate/ClickIzquierdo" unique_id=1078697952]
+offset_left = 136.66667
+offset_top = -36.666664
+offset_right = 238.66667
+offset_bottom = -2.6666641
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 28
+text = "Atacar"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelComoJugar/Fondo/PaginaCombate/ClickIzquierdo" unique_id=1038297942]
+offset_left = -80.00001
+offset_top = 86.666664
+offset_right = 349.0
+offset_bottom = 116.666664
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 25
+text = "Haz clic izquierdo para atacar."
+horizontal_alignment = 1
+
+[node name="Direccion" type="Sprite2D" parent="PanelComoJugar/Fondo/PaginaCombate" unique_id=333894770]
+position = Vector2(392, 108)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("38_0argx")
+
+[node name="Label" type="Label" parent="PanelComoJugar/Fondo/PaginaCombate/Direccion" unique_id=451783683]
+offset_left = 99.99999
+offset_top = -33.333332
+offset_right = 339.0
+offset_bottom = 0.66666794
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 28
+text = "Dirigir el golpe"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelComoJugar/Fondo/PaginaCombate/Direccion" unique_id=2143133253]
+offset_left = -16.666676
+offset_top = 83.33333
+offset_right = 287.3333
+offset_bottom = 146.33333
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 25
+text = "Acércate y mira hacia
+el enemigo."
+horizontal_alignment = 1
+
+[node name="LineaDivisora" type="Sprite2D" parent="PanelComoJugar/Fondo/PaginaCombate" unique_id=1119464113]
+position = Vector2(262, 160)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("39_t3yds")
+
+[node name="Label" type="Label" parent="PanelComoJugar/Fondo/PaginaCombate/LineaDivisora" unique_id=981359780]
+offset_left = -242.0
+offset_top = 14.0
+offset_right = 242.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+text = "Puedes atacar hacia arriba, abajo, izquierda y drecha."
+
+[node name="PaginaObjetivo" type="Control" parent="PanelComoJugar/Fondo" unique_id=886669096]
+visible = false
+anchors_preset = 0
+offset_left = 59.0
+offset_top = 114.0
+offset_right = 581.0
+offset_bottom = 296.0
+
+[node name="Cuadros" type="HBoxContainer" parent="PanelComoJugar/Fondo/PaginaObjetivo" unique_id=891980175]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_constants/separation = 25
+
+[node name="CuadroEspada" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaObjetivo/Cuadros" unique_id=512165189]
+custom_minimum_size = Vector2(150, 90)
+layout_mode = 2
+texture = ExtResource("25_o1dkq")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaObjetivo/Cuadros/CuadroEspada" unique_id=406420730]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 148.0
+offset_bottom = 89.0
+texture = ExtResource("40_gvp20")
+expand_mode = 1
+
+[node name="CuadroAtacar" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaObjetivo/Cuadros" unique_id=1775604242]
+custom_minimum_size = Vector2(150, 90)
+layout_mode = 2
+texture = ExtResource("25_o1dkq")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaObjetivo/Cuadros/CuadroAtacar" unique_id=200433234]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 148.0
+offset_bottom = 89.0
+texture = ExtResource("41_0argx")
+expand_mode = 1
+
+[node name="CuadroDireccion" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaObjetivo/Cuadros" unique_id=2038351200]
+custom_minimum_size = Vector2(150, 90)
+layout_mode = 2
+texture = ExtResource("25_o1dkq")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelComoJugar/Fondo/PaginaObjetivo/Cuadros/CuadroDireccion" unique_id=24294338]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 148.0
+offset_bottom = 89.0
+texture = ExtResource("42_t3yds")
+expand_mode = 1
+
+[node name="Texto" type="Control" parent="PanelComoJugar/Fondo/PaginaObjetivo" unique_id=1020110600]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PanelComoJugar/Fondo/PaginaObjetivo/Texto" unique_id=908067862]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 86.0
+offset_right = 137.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 10
+text = "Explora y aprende"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelComoJugar/Fondo/PaginaObjetivo/Texto" unique_id=928947256]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 102.0
+offset_right = 151.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 7
+text = "Busca pistas de inglés en carteles
+y conversaciones."
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="PanelComoJugar/Fondo/PaginaObjetivo/Texto" unique_id=23363620]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 86.0
+offset_right = 315.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 10
+text = "Completar misiónes"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="PanelComoJugar/Fondo/PaginaObjetivo/Texto" unique_id=88553129]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 102.0
+offset_right = 344.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 7
+text = "Habla con la asistente del gremio
+o a algun ciudadano para recibir misiones."
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="PanelComoJugar/Fondo/PaginaObjetivo/Texto" unique_id=2077270541]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 86.0
+offset_right = 492.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 10
+text = "Aprueba el examen"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="PanelComoJugar/Fondo/PaginaObjetivo/Texto" unique_id=1733258275]
+layout_mode = 0
+offset_left = 358.0
+offset_top = 102.0
+offset_right = 515.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 7
+text = "Responde las preguntas de inglés
+para desbloquear el siguiente nivel."
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="PanelComoJugar/Fondo/PaginaObjetivo/Texto" unique_id=1340236024]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.93406594
+anchor_right = 0.5
+anchor_bottom = 0.93406594
+offset_left = -142.0
+offset_top = -13.0
+offset_right = 142.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9490196, 0.8666667, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("12_ju286")
+theme_override_font_sizes/font_size = 8
+text = "Las pistas del recorrido te ayudaran en el examen."
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LineaDivisora" type="Sprite2D" parent="PanelComoJugar/Fondo/PaginaObjetivo" unique_id=89043076]
+position = Vector2(260, 143)
+scale = Vector2(0.1314917, 0.1301105)
+texture = ExtResource("43_ros4d")
+
+[connection signal="pressed" from="ContenedorBotones/BotonJugar" to="." method="_on_boton_jugar_pressed"]
+[connection signal="pressed" from="ContenedorBotones/BotonComoJugar" to="." method="_on_boton_como_jugar_pressed"]
+[connection signal="pressed" from="ContenedorBotones/BotonOpciones" to="." method="_on_boton_opciones_pressed"]
+[connection signal="pressed" from="ContenedorBotones/BotonSalir" to="." method="_on_boton_salir_pressed"]
+[connection signal="pressed" from="PanelComoJugar/Fondo/BotonCerrar" to="PanelComoJugar" method="_on_boton_cerrar_pressed"]
+[connection signal="pressed" from="PanelComoJugar/Fondo/BotonSiguiente" to="PanelComoJugar" method="_on_boton_siguiente_pressed"]
+[connection signal="pressed" from="PanelComoJugar/Fondo/BotonVolver" to="PanelComoJugar" method="_on_boton_volver_pressed"]
